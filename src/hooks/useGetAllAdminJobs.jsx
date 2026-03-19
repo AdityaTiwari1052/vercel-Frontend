@@ -1,6 +1,5 @@
 import { setAllAdminJobs } from '@/redux/jobSlice'
-import apiClient from '@/utils/apiClient';
-import axios from 'axios'
+import api from '@/utils/api'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -9,7 +8,7 @@ const useGetAllAdminJobs = () => {
     useEffect(()=>{
         const fetchAllAdminJobs = async () => {
             try {
-                const res = await apiClient.get('/job/get-admin-jobs', {withCredentials:true});
+                const res = await api.get('/job/get-admin-jobs');
                 if(res.data.success){
                     dispatch(setAllAdminJobs(res.data.jobs));
                 }
