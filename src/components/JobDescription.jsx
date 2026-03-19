@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
 import { Briefcase, MapPin, Clock, DollarSign, ArrowLeft, Calendar } from 'lucide-react';
 import { JOB_API_END_POINT, APPLICATION_API_END_POINT } from '@/utils/constant';
-import axios from 'axios';
+import api from '@/utils/api';
 import { useUser, useAuth } from '@clerk/clerk-react';
 
 const JobDescription = () => {
@@ -28,8 +28,8 @@ const JobDescription = () => {
             }
     
             const token = await getToken();
-            const res = await axios.post(
-                `/api/v1${APPLICATION_API_END_POINT}/apply/${jobId}`,
+            const res = await api.post(
+                `${APPLICATION_API_END_POINT}/apply/${jobId}`,
                 {
                     userId: user.id,
                     resume: user.resume || '',
@@ -37,7 +37,6 @@ const JobDescription = () => {
                 },
                 {
                     headers: {
-                        'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`
                     }
                 }
@@ -75,8 +74,8 @@ const JobDescription = () => {
         const fetchSingleJob = async () => {
             try {
                 const token = await getToken();
-                const res = await axios.get(
-                    `/api/v1${JOB_API_END_POINT}/${jobId}`,
+                const res = await api.get(
+                    `${JOB_API_END_POINT}/${jobId}`,
                     {
                         headers: token ? { Authorization: `Bearer ${token}` } : {},
                         params: { userId: user?.id }
