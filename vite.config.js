@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
           style-src 'self' 'unsafe-inline' https://*.clerk.accounts.dev;
           img-src 'self' data: https:;
           font-src 'self';
-          connect-src 'self' http://localhost:8000 http://localhost:5173 https://job-portal-v3b1.onrender.com https://*.clerk.accounts.dev https://*.clerk.accounts.workers.dev https://*.clerk.dev https://*.clerk.vercel.com;
+          connect-src 'self' http://localhost:8000 http://localhost:5173 https://vercel-frontend-i3drjb8d4-aditya-tiwaris-projects-95786dfd.vercel.app/ https://*.clerk.accounts.dev https://*.clerk.accounts.workers.dev https://*.clerk.dev https://*.clerk.vercel.com;
           frame-src 'self' https://*.clerk.accounts.dev;
           worker-src 'self' blob: https://*.clerk.accounts.dev https://*.clerk.accounts.workers.dev;
         `.replace(/\s+/g, ' ').trim(),

@@ -96,8 +96,7 @@ const RecruiterAuthModal = ({ isOpen, onClose, onSuccess }) => {
     setResetEmail('');
     setResetEmailSent(false);
 
-    // Check API health when modal opens
-    checkApiHealth();
+    
   }, [isOpen]);
 
   // Separate effect for when login/signup mode changes
@@ -172,20 +171,7 @@ const RecruiterAuthModal = ({ isOpen, onClose, onSuccess }) => {
     return true;
   };
 
-  const checkApiHealth = async () => {
-    try {
-      console.log('🏥 Checking API health...');
-      const response = await api.get('/health');
-      console.log('✅ API health check successful:', response.data);
-      setApiAvailable(true);
-      return true;
-    } catch (error) {
-      console.error('❌ API health check failed:', error.message);
-      setApiAvailable(false);
-      return false;
-    }
-  };
-
+  
   const handleLogin = async (e) => {
     e.preventDefault();
 
