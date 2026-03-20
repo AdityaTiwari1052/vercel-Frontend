@@ -555,7 +555,7 @@ const RecruiterAuthModal = ({ isOpen, onClose, onSuccess }) => {
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-lg font-semibold">
-            {isForgotPassword ? 'Forgot Password' : isLogin ? 'Recruiter Login' : 'Create Recruiter Account'}
+            {isForgotPassword ? 'Forgot Password' : isLogin ? 'Recruiter Login' : 'Join as Recruiter'}
           </h2>
           <button
             type="button"
@@ -570,14 +570,16 @@ const RecruiterAuthModal = ({ isOpen, onClose, onSuccess }) => {
         {/* Form */}
         {!isForgotPassword && (
           <div className="p-4 pt-1">
-            <div className="text-center mb-3">
-              <h1 className="text-xl font-bold text-gray-900">
-                {isLogin ? 'Sign in to Job Portal' : 'Create Recruiter Account'}
-              </h1>
-              <p className="text-gray-600 mt-0.5">
-                {isLogin ? 'Access your recruiter dashboard' : 'Join our platform to post jobs'}
-              </p>
-            </div>
+            {isLogin && (
+              <div className="text-center mb-3">
+                <h1 className="text-xl font-bold text-gray-900">
+                  Sign in to Job Portal
+                </h1>
+                <p className="text-gray-600 mt-0.5">
+                  Access your recruiter dashboard
+                </p>
+              </div>
+            )}
 
           {!isLogin && currentStep === 3 ? (
             <form onSubmit={handleOtpVerification}>
